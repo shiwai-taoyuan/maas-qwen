@@ -1,0 +1,50 @@
+# =========================
+# Python cache / artifacts
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+*.pyo
+.Python
+
+# =========================
+# Virtual environments
+# =========================
+.venv/
+venv/
+env/
+ENV/
+
+# =========================
+# IDE / editor
+# =========================
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# =========================
+# Project runtime outputs
+# =========================
+logs/
+output/
+ftp_dir/
+
+# Large model / plugin artifacts
+checkpoints/
+plugins/
+!checkpoints/PUT_CHECKPOINT_HERE
+
+# =========================
+# Secrets / local env
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Jupyter
+# =========================
+.ipynb_checkpoints/

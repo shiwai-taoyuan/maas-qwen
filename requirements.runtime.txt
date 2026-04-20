@@ -1,0 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cu121
+fastapi
+uvicorn
+pydantic
+requests
+redis
+transformers
+vllm
+peft==0.14.0
+concurrent-log-handler
+tqdm

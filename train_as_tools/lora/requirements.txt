@@ -1,0 +1,12 @@
+accelerate~=0.27.2
+datasets>=2.14.6
+loguru
+peft~=0.10.0
+sentencepiece
+scikit-learn
+tensorboard
+tqdm>=4.47.0
+transformers>=4.39.3
+trl~=0.8.3
+concurrent_log_handler==0.9.20
+numpy==1.26.4
