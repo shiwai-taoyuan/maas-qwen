@@ -9,7 +9,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer
 
 def parse_args():
     parser = argparse.ArgumentParser(description="Chat inference for SFT + GRPO LoRA adapters")
-    parser.add_argument("--model_name", type=str, default="/Users/wei/Documents/code/checkpoints/Qwen3-0d6B")
+    parser.add_argument("--model_name", type=str, default="checkpoints/Qwen3-0d6B")
     parser.add_argument("--sft_adapter_path", type=str, default="./sft-lora-model/final-lora")
     parser.add_argument("--grpo_adapter_path", type=str, default="./grpo-lora-model/final-lora")
     parser.add_argument("--max_new_tokens", type=int, default=256)

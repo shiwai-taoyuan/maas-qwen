@@ -21,7 +21,7 @@ def parse_args():
     parser = argparse.ArgumentParser(
         description="Three-stage pipeline: SFT LoRA -> RM LoRA -> GRPO LoRA (all data built-in)"
     )
-    parser.add_argument("--model_name", type=str, default="/Users/wei/Documents/code/checkpoints/Qwen3-0d6B")
+    parser.add_argument("--model_name", type=str, default="checkpoints/Qwen3-0d6B")
     parser.add_argument("--sft_output_dir", type=str, default="./sft-lora-model")
     parser.add_argument("--rm_output_dir", type=str, default="./rm-lora-model")
     parser.add_argument("--grpo_output_dir", type=str, default="./grpo-lora-model")
