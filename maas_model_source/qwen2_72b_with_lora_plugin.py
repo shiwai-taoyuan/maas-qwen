@@ -15,14 +15,24 @@ def find_all_lora_plugins():
     按照目录，据此找到所有的 lora plugin
     """
     global plugins
-    plugins = dict()
+    new_plugins = dict()
     for plugin_id in os.listdir(ABS_LORA_PLUGINS_DIR):
         if not os.path.isdir(os.path.join(ABS_LORA_PLUGINS_DIR, plugin_id)):
             continue
-        plugins[int(plugin_id)] = os.path.join(ABS_LORA_PLUGINS_DIR, plugin_id)
+        new_plugins[int(plugin_id)] = os.path.join(ABS_LORA_PLUGINS_DIR, plugin_id)
+    plugins = new_plugins
 
 
 cache_plugin_params = dict()
+
+
+def _get_device(model):
+    """从模型中推断设备，回退到 CUDA 0 或 CPU。"""
+    try:
+        return next(model.parameters()).device
+    except (StopIteration, AttributeError):
+        pass
+    return torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 def load_lora_model(origin_model, lora_plugin_id):
@@ -44,7 +54,7 @@ def load_lora_model(origin_model, lora_plugin_id):
     model = PeftModel.from_pretrained(origin_model, lora_model_dir)
     model.base_model.enable_adapter_layers()
     model = model.eval()
-    model = model.cuda()
+    model = model.to(_get_device(origin_model))
     logger.info(f"finish loading lora plugin = {lora_plugin_id}")
     return model
 
@@ -59,7 +69,7 @@ def unload_lora_model(peft_model):
     origin_model = peft_model.get_base_model()
 
     origin_model = origin_model.eval()
-    origin_model = origin_model.cuda()
+    origin_model = origin_model.to(_get_device(peft_model))
 
     return origin_model
 

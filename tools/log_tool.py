@@ -33,7 +33,7 @@ class MyLogger(logging.Logger):
     def __init__(self, file_dir, open_file_log=1, file_log_level="DEBUG",
                  open_stream_log=1, stream_log_level="DEBUG",
                  simple_mode=True):
-        super().__init__(self)
+        super().__init__("maas-qwen")
         self.level_list = ["DEBUG", "INFO", "WARN", "ERROR"]
         self.sep = "-"
         self.max_bytes = 1024 * 1024 * 30
